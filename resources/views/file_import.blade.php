@@ -14,13 +14,7 @@
             Import and Export CSV & Excel
         </h2>
 
-        @if($message = Session::get('import'))
-                 <div class="alert alert-info">
-                     <p>{{ $message }}</p>
-                 </div>
-        @endif
-
-         @if($message = Session::get('export'))
+        @if($message = Session::get('success'))
                  <div class="alert alert-success">
                      <p>{{ $message }}</p>
                  </div>
@@ -29,18 +23,21 @@
         <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
-                <div class="custom-file text-left">
-                    
-                    <input type="file" name="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
 
+                <div class="form-group">
+                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
+
             </div>
-            <button class="btn btn-primary">Import data</button>
-            <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
+            <button class="btn btn-primary" style='width:45%;'>Import data</button>
+            
         </form>
 
+        <div class=" mt-3">
+            <a class="btn btn-success" href="{{ route('file-export') }}" style='width:45%;'>Export data</a>
+        </div>
     </div>
+
 </body>
 
 </html>

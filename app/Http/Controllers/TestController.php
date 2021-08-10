@@ -22,7 +22,7 @@ class TestController extends Controller
     public function fileImport(Request $request) 
     {
         Excel::import(new TestsImport, $request->file('file')->store('temp'));
-        return back()->with('import','Data imported successfully');
+        return back()->with('success','Data imported successfully');
     }
 
     /**
@@ -30,8 +30,6 @@ class TestController extends Controller
     */
     public function fileExport() 
     {
-         return Excel::download(new TestsExport, 'collection.xlsx');
-         return back()->with('export','Data exported successfully');
-    }    
+         return Excel::download(new TestsExport, 'collection.xlsx');    }    
 }
 
